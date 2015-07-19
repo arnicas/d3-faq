@@ -35,7 +35,7 @@ Data values read in with d3.csv will be read as strings.  You need to convert ty
 
 ####JSON File Format
 
-**Invalid JSON:**
+**Be aware of invalid JSON:**
     JSON format looks like this (from [Wikipedia](http://en.wikipedia.org/wiki/JSON)): 
 
 ````
@@ -73,8 +73,8 @@ General D3
 
 ####What is or what does it mean to say '+d.someProperty'?**
 
-(why does + make a number?)
-    sometimes improper use of this is the cause of a NaN too
+A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast a d.value as a number.
+Sometimes improper use of this causes errors.
 
 ###How to put multiple graphs on the page (small multiples)
 
@@ -114,36 +114,6 @@ A date must be “parse”d to read it in, not just declared in the format strin
 TODO
 
 
-###Debugging NaNs: Where is that NaN coming from?
-
-***NaN and other problems from a d3 scale:**
-
-Is your scale set for the expected domain and range?  You need to give them arrays, which means values in square brackets, or use d3.extent to get an array of the lowest and highest values for you:
-
-````
-var yearScale = d3.time.scale()
-    .domain(d3.extent(data, function (d) { return d.year;}))
-    .range([50, window.innerWidth - 50]);
-````
-
-You use the scale by calling it as a function on a value, which will be mapped from the domain to the range:
-
-````
-return yearScale(d.year);
-
-````
-
-Remember that if you assign a function to a variable, it's still a function! Some D3 methods are returning *function* objects, for example with `var x = d3.scale.linear();` the variable `x` is now a function that was created by `d3.scale.linear()`.
-
-
-**NaN after reading in a data file**
-
-Did you parse the value correctly?  Is there a value in the cell?
-
-**Coping with NaNs when charting (bars, lines)**
-
-
-
 General Gotchas and FAQs with JS
 ================================
 
@@ -175,7 +145,36 @@ Debugging Help
 Check out the Chrome [tips and tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks) for using the console for debugging.
 _TODO: How to debug in the console - console.log, breakpoints, inspect elements, d3 at the command line._
 
-**Tips**:
+
+###Debugging NaNs: Where is that NaN coming from?
+
+**NaN and other problems from a d3 scale:**
+
+Is your scale set for the expected domain and range?  You need to give them arrays, which means values in square brackets, or use d3.extent to get an array of the lowest and highest values for you:
+
+````
+var yearScale = d3.time.scale()
+    .domain(d3.extent(data, function (d) { return d.year;}))
+    .range([50, window.innerWidth - 50]);
+````
+
+You use the scale by calling it as a function on a value, which will be mapped from the domain to the range:
+
+````
+return yearScale(d.year);
+
+````
+
+Remember that if you assign a function to a variable, it's still a function! Some D3 methods are returning *function* objects, for example with `var x = d3.scale.linear();` the variable `x` is now a function that was created by `d3.scale.linear()`.
+
+**NaN after reading in a data file**
+
+Did you parse the value correctly?  Is there a value in the cell?
+
+**Coping with NaNs when charting (bars, lines)**
+
+
+**More Debugging Tips**:
 
 Check the size of your selections first. For example:
 
@@ -190,6 +189,7 @@ Check the values of your functions using accessors. For example, don't tell me y
 Test what your functions return! You can give them sample input:
 
     ```console.log(x(5));```
+
 
 
 Tool Setup and Use
