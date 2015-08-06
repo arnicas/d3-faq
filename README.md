@@ -3,14 +3,29 @@
 
 **_With contributions from Scott Murray, Sophie Engle, Lynn Cherny_**
 
-Loading Data, CSVs, JSON, etc.
-==============================
+TOC:
+
+* [Loading Data, CSVs, JSON, etc.](# Loading Data, CSVs, JSON, etc.)
+* [General D3](General D3)
+* [General Gotchas and FAQs with JS](# General Gotchas and FAQs with JS)
+* [Debugging Help](Debugging Help)
+* [Tool Setup and Use](Tool Setup and Use)
+* [Useful Code Snippets](Useful Code Snippets)
+
+
+
+# Loading Data, CSVs, JSON, etc.
 
 **Using multiple data files (elegantly) - queue, asynchrony, etc.**
 
 **How do I treat data sources with a [-, NaN, NA, null] for 0?**
 
 **Wide vs. long format for data - how do I transform it?**
+
+The difference: https://en.wikipedia.org/wiki/Wide_and_narrow_data
+In D3's csv read, each row becomes an object with those attributes, hence often wide format is used for the data. If you have long or narrow format, you can use nest to group by some object identified. E.g.:
+http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
+In Python (especially with pandas), R (melt or reshape), and Excel (with VBA) you can transform it prior to import.
 
 **CSV headers**
     No spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears”.
@@ -76,13 +91,17 @@ General D3
 A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast a d.value as a number.
 Sometimes improper use of this causes errors.
 
-###How to put multiple graphs on the page (small multiples)
+####Understanding the difference between chaining and/or naming transitions, versus not.
 
-###How to add a tooltip
+####How to put multiple graphs on the page (small multiples)
 
-###How to add a legend
+####Method chaining and the reusable chart pattern
 
-###SVG Text
+####How to add a tooltip
+
+####How to add a legend
+
+####SVG Text
 
 **How do I split long lines of SVG text?**
 
@@ -90,7 +109,7 @@ Sometimes improper use of this causes errors.
 
 ####Data() vs. Datum()**
 
-###Style vs. Attr for SVG elements
+####Style vs. Attr for SVG elements
 
 **Which takes precedence, which to use when:**
 
@@ -108,15 +127,44 @@ and then in the style sheet:
     .redrect { fill: red }
 ````
 
-###Date Formats and Formatting - Reading and Writing!
+####Date Formats and Formatting - Reading and Writing!
 
 A date must be “parse”d to read it in, not just declared in the format string. Example:
 TODO
 
+####Loading Multiple Files
 
-General Gotchas and FAQs with JS
-================================
+*Understanding the pros/cons of loading files asynchronously, chaining `d3.json()` calls to load files synchronously, and using [`Queue.js`](https://github.com/mbostock/queue) instead.
 
+####Efficiency
+
+Save your `d3.selectAll()` selections if you plan to reuse them (just be wary if the selection changes).
+
+**Okay:**
+
+```
+var bubbles = d3.selectAll("circle");
+bubbles.attr("cx", 5);
+bubbles.attr("cy", 10);
+```
+
+*or*
+
+```
+d3.selectAll("circle")
+  .attr("cx", 5)
+  .attr("cy", 10);
+```
+
+**Less Efficient:**
+
+```
+d3.selectAll("circle").attr("cx", 5);
+d3.selectAll("circle").attr("cy", 5);
+```
+
+
+# General Gotchas and FAQs with JS
 
 **Case Sensitivity--Or, lower and upper case letters matter!**
 
@@ -129,6 +177,8 @@ JS is case-sensitive.  You can’t call your variable **d.affluence** if the val
 **Missing semicolons confusing interpretation of JavaScript**
 
 **var scope**
+* Initially, variables in included script files are the same as variables defined in the HTML body script sections.
+* global and local
 
 **this**
 
@@ -138,11 +188,19 @@ JS is case-sensitive.  You can’t call your variable **d.affluence** if the val
 
 Understanding the "equivalent-ish" operator `==` versus the "equivalent" operator `===` and when one is beneficial and when it is not. Especially since `if(something)` is often used in examples to detect if something is not undefined, but will break if your data has 0 values in it.
 
+**Script file at start in head or at end.**
+
 
 Debugging Help
 ==============
 
 Check out the Chrome [tips and tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks) for using the console for debugging.
+
+*Video on console use for D3: https://egghead.io/lessons/debugging-with-dev-tools
+
+*Parts of the dev tools in chrome: http://www.html5rocks.com/en/tutorials/developertools/part1/
+
+
 _TODO: How to debug in the console - console.log, breakpoints, inspect elements, d3 at the command line._
 
 
@@ -195,6 +253,14 @@ Test what your functions return! You can give them sample input:
 Tool Setup and Use
 ==================
 
+####Git Hub
+
+Intros to GitHub:
+
+ * https://guides.github.com/activities/hello-world/
+
+ * http://blog.teamtreehouse.com/git-for-designers-part-1
+
 ####Bl.ocks.org
 
 **Seeing source gist for a bl.ock:**
@@ -215,70 +281,71 @@ Your d3 won’t display in the live page in a published gist/bl.ock if you don�
     <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
 ````
 
-
 **How do I get an image in bl.ocks.org previews?**
-
-####Setting up WAMP/ MAMP
-
-On Windows, WAMP is a full-service free server (plus MySQL if you want it in the future.)
-
-On Mac, you can use either MAMP or run a server in your directory using Python from the command line.
+TODO
 
 
+###Setting up WAMP/ MAMP
 
-_From Sophie:_
+On Windows, WAMP is a full-service free server (plus MySQL if you want it in the future.) On Mac, you can use either MAMP or run a server in your directory using Python from the command line.
 
-Confusing Topics
-----------------
+####MAMP Setup
+
+The location for MAMP is here: https://www.mamp.info/en/downloads/.  You only need MAMP, not MAMP Pro, unless you want to get extra nice features for money.
+If you are struggling with the setup for the web server on a Mac:  after downloading MAMP, double click to install and go through the install screens.  Then find the app icon for MAMP (not MAMP Pro! that's a free trial) in your Launchpad or Applications directory and start it up.
+
+You will see a preferences icon on the left:
+
+![mamp dialog](images/mamp_dialog.png)
+
+ Apparently MAMP by default uses a port that is used by other stuff like Skype (8888).  You will probably want to change it.  If your server never starts (the button never turns green on the dialog), you probably have a port conflict. If you click on the Preferences, you can change the port for the localhost server if you want.  (I wanted a different one because I have other servers running on the same machine.  The default port for web servers is 80, but it may be in use already.)  If you change the port, for example to 7777, you will enter the url as:
+
+```http://localhost:7777``` to see your files list.
+
+To get those files --- You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called D3 Work.
+
+![mamp preferences](images/mamp_preferences.png)
+
+Put the files you want to view in the browser into the directory you set as your Document Root. Make sure the server is running - on the Start/Stop tab there should be a green server power icon showing.
+
+Then, in your browser, go to http://localhost or http://localhost:YourNumber and you should see the files with links if they are html files.
+
+Error on Yosemite 10: try this fix http://stackoverflow.com/questions/25333173/mysql-with-mamp-does-not-work-with-osx-yosemite-10-10/26446158#26446158.
+
+###Python SimpleServer from Command Line
+
+Alternately, from a Terminal program command line on the Mac (google how to find and start one), you can start a web server in the directory with your files:
+
+````
+>python -m HTTPSimpleServer 5555
+````
+
+You'll need to run this whenever you want to work on your web files.  You'll go to http://localhost:5555 to see the files in the directory if you use the command above.
+
+You can stop the webserver by typing ^c (control-c) in that window.
+
+###Node Server
+
+On a Mac, if you have Homebrew, use Homebrew to install Node, and then install http-server. Run it in the directory of your files, with & so you can get your command line back.
+
+````
+brew install node
+npm install -g http-server
+http-server
+````
+This will make your server at localhost:8080.
 
 
-- Understanding the difference between chaining and/or naming transitions, versus not.
+####Brackets Editor Preview Option
 
-- Understanding method chaining and the reusable chart pattern used by D3.
-
-The following are some JavaScript topics student tend to struggle with:
-
-- Understanding scope in JavaScript. Initially, some students thought included script files had different scope than variables defined in the HTML body.
+Apparently the Brackets MACOSX editor will run like a server and display your files just fine locally: http://brackets.io/
 
 
-Efficiency
-----------
 
-Understand where the hidden loops are in the code!
+Useful Code Snippets
+--------------------
 
-- Save your `d3.selectAll()` selections if you plan to reuse them (just be wary if the selection changes).
-
-    **Okay:**
-
-    ```
-    var bubbles = d3.selectAll("circle");
-    bubbles.attr("cx", 5);
-    bubbles.attr("cy", 10);
-    ```
-
-    *or*
-
-    ```
-    d3.selectAll("circle")
-      .attr("cx", 5)
-      .attr("cy", 10);
-    ```
-
-    **Bad:**
-
-    ```
-    d3.selectAll("circle").attr("cx", 5);
-    d3.selectAll("circle").attr("cy", 5);
-  ```
-
-- Understanding the pros/cons of including a script file in the HTML head, versus at the end of the body.
-
-- Understanding the pros/cons of loading files asynchronously, chaining `d3.json()` calls to load files synchronously, and using [`Queue.js`](https://github.com/mbostock/queue) instead.
-
-
-Useful Code Snippets in JS directory
-------------------------------------
-
+These code snippets are in the js directory.
 
 **fixBounds.js**: fixes the size and viewbox of an SVG
 to fit an inner group with the specified padding. Both the
