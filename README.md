@@ -5,12 +5,12 @@
 
 TOC:
 
-* [Loading Data, CSVs, JSON, etc.](# Loading Data, CSVs, JSON, etc.)
-* [General D3](General D3)
-* [General Gotchas and FAQs with JS](# General Gotchas and FAQs with JS)
-* [Debugging Help](Debugging Help)
-* [Tool Setup and Use](Tool Setup and Use)
-* [Useful Code Snippets](Useful Code Snippets)
+* [Loading Data, CSVs, JSON, etc.](#loading-data-csvs-json-etc)
+* [General D3](#general-d3)
+* [General Gotchas and FAQs with JS](#general-gotchas-and-faqs-with-js)
+* [Debugging Help](#debugging-help)
+* [Tool Setup and Use](#tool-setup-and-help)
+* [Useful Code Snippets](#useful-code-snippets)
 
 
 
@@ -83,8 +83,7 @@ Data values read in with d3.csv will be read as strings.  You need to convert ty
 Notice, the labels are in double quotes.  You can check your data’s format in a validator online: http://jsonformat.com/.
 
 
-General D3
-==========
+# General D3
 
 ####What is or what does it mean to say '+d.someProperty'?**
 
