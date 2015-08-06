@@ -9,7 +9,7 @@ TOC:
 * [General D3](#general-d3)
 * [General Gotchas and FAQs with JS](#general-gotchas-and-faqs-with-js)
 * [Debugging Help](#debugging-help)
-* [Tool Setup and Use](#tool-setup-and-help)
+* [Tool Setup and Use](https://github.com/arnicas/d3-faq#tool-setup-and-use)
 * [Useful Code Snippets](#useful-code-snippets)
 
 
