@@ -5,16 +5,17 @@
 
 TOC:
 
-* [Loading Data, CSVs, JSON, etc.](#loading-data-csvs-json-etc)
+* [Loading Data, CSVs, JSON, etc.](#loading-data)
 * [General D3](#general-d3)
-* [General Gotchas and FAQs with JS](#general-gotchas-and-faqs-with-js)
+* [General Gotchas and FAQs with JS](#gotchas-js)
 * [Debugging Help](#debugging-help)
-* [Tool Setup and Use](https://github.com/arnicas/d3-faq#tool-setup-and-use)
+* [Tool Setup and Use](#tool-setup)
 * [Useful Code Snippets](#useful-code-snippets)
 
 
 
-# Loading Data, CSVs, JSON, etc.
+<a name="loading-data"></a>Loading Data, CSVs, JSON, etc.
+---------------------------------------------------------
 
 **Using multiple data files (elegantly) - queue, asynchrony, etc.**
 
@@ -83,7 +84,8 @@ Data values read in with d3.csv will be read as strings.  You need to convert ty
 Notice, the labels are in double quotes.  You can check your data’s format in a validator online: http://jsonformat.com/.
 
 
-# General D3
+<a name="general-d3"></a>General D3 Intro Questions
+---------------------------------------------------
 
 ####What is or what does it mean to say '+d.someProperty'?**
 
@@ -163,7 +165,7 @@ d3.selectAll("circle").attr("cy", 5);
 ```
 
 
-# General Gotchas and FAQs with JS
+# <a name="gotchas-js"></a>General Gotchas and FAQs with JS
 
 **Case Sensitivity--Or, lower and upper case letters matter!**
 
@@ -190,8 +192,10 @@ Understanding the "equivalent-ish" operator `==` versus the "equivalent" operato
 **Script file at start in head or at end.**
 
 
-Debugging Help
-==============
+
+<a name="debugging-help"></a>Debugging Help
+-------------------------------------------
+
 
 Check out the Chrome [tips and tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks) for using the console for debugging.
 
@@ -249,8 +253,8 @@ Test what your functions return! You can give them sample input:
 
 
 
-Tool Setup and Use
-==================
+<a name="tool-setup"></a>Tool Setup and Use
+-------------------------------------------
 
 ####Git Hub
 
@@ -341,8 +345,8 @@ Apparently the Brackets MACOSX editor will run like a server and display your fi
 
 
 
-Useful Code Snippets
---------------------
+<a name="useful-code-snippets"></a>Useful Code Snippets
+-------------------------------------------------------
 
 These code snippets are in the js directory.
 
