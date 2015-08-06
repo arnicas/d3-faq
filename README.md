@@ -18,10 +18,13 @@ TOC:
 ---------------------------------------------------------
 
 **Using multiple data files (elegantly) - queue, asynchrony, etc.**
+TODO
 
 **How do I treat data sources with a [-, NaN, NA, null] for 0?**
+TODO
 
 **Wide vs. long format for data - how do I transform it?**
+TODO
 
 The difference: https://en.wikipedia.org/wiki/Wide_and_narrow_data
 In D3's csv read, each row becomes an object with those attributes, hence often wide format is used for the data. If you have long or narrow format, you can use nest to group by some object identified. E.g.:
@@ -93,24 +96,34 @@ A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast 
 Sometimes improper use of this causes errors.
 
 ####Understanding the difference between chaining and/or naming transitions, versus not.
+TODO
 
 ####How to put multiple graphs on the page (small multiples)
+TODO
 
 ####Method chaining and the reusable chart pattern
+TODO
 
 ####How to add a tooltip
+TODO
 
 ####How to add a legend
+TODO
 
 ####SVG Text
+TODO
 
 **How do I split long lines of SVG text?**
+TODO
 
 **How do I add an icon or html to SVG text?**
+TODO
 
 ####Data() vs. Datum()**
+TODO
 
 ####Style vs. Attr for SVG elements
+TODO
 
 **Which takes precedence, which to use when:**
 
@@ -135,7 +148,7 @@ TODO
 
 ####Loading Multiple Files
 
-*Understanding the pros/cons of loading files asynchronously, chaining `d3.json()` calls to load files synchronously, and using [`Queue.js`](https://github.com/mbostock/queue) instead.
+* Understanding the pros/cons of loading files asynchronously, chaining `d3.json()` calls to load files synchronously, and using [`Queue.js`](https://github.com/mbostock/queue) instead.
 
 ####Efficiency
 
@@ -172,24 +185,30 @@ d3.selectAll("circle").attr("cy", 5);
 JS is case-sensitive.  You can’t call your variable **d.affluence** if the value is really **d.Affluence**.  Also, **d.yearlyAvg** is not the same as **d.yearlyavg**.  If you read them in from a CSV file, check your header labels!
 
 **Using script files, CDNs, etc.**
+TODO
 
 **Missing or improperly placed } or })**
+TODO
 
 **Missing semicolons confusing interpretation of JavaScript**
+TODO
 
 **var scope**
 * Initially, variables in included script files are the same as variables defined in the HTML body script sections.
 * global and local
 
 **this**
+TODO
 
 **How do I round numbers?**
+TODO
 
 **Equivalence and "Equivalence" in JS**
 
 Understanding the "equivalent-ish" operator `==` versus the "equivalent" operator `===` and when one is beneficial and when it is not. Especially since `if(something)` is often used in examples to detect if something is not undefined, but will break if your data has 0 values in it.
 
 **Script file at start in head or at end.**
+TODO
 
 
 
@@ -233,6 +252,7 @@ Remember that if you assign a function to a variable, it's still a function! Som
 Did you parse the value correctly?  Is there a value in the cell?
 
 **Coping with NaNs when charting (bars, lines)**
+TODO
 
 
 **More Debugging Tips**:
@@ -264,17 +284,21 @@ Intros to GitHub:
 
  * http://blog.teamtreehouse.com/git-for-designers-part-1
 
-####Bl.ocks.org
+####Bl.ocks.org and Gists
 
-**Seeing source gist for a bl.ock:**
+* Mike's Command line tutorial on making a block: http://bost.ocks.org/mike/block/**
 
-To find the source of a bl.ocks.org link, just replace the blocks part with gist.github.com:
+* **Seeing source gist for a bl.ock:**
 
-```
-http://bl.ocks.org/AndresClavijo/9706481d505f2553a71a
-becomes
-https://gist.github.com/AndresClavijo/9706481d505f2553a71a
-```
+  To find the source of a bl.ocks.org link, just replace the blocks part with gist.github.com:
+
+  ```
+  http://bl.ocks.org/AndresClavijo/9706481d505f2553a71a
+  becomes
+  https://gist.github.com/AndresClavijo/9706481d505f2553a71a
+  ```
+
+  Or add the extension to your browser: https://github.com/mbostock/bl.ocks.org (scroll down)
 
 **Path to d3 in a bl.ocks.org file:**
 
@@ -285,12 +309,18 @@ Your d3 won’t display in the live page in a published gist/bl.ock if you don�
 ````
 
 **How do I get an image in bl.ocks.org previews?**
-TODO
+Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
 
 
-###Setting up WAMP/ MAMP
+###Running a Server
 
-On Windows, WAMP is a full-service free server (plus MySQL if you want it in the future.) On Mac, you can use either MAMP or run a server in your directory using Python from the command line.
+You won't be able to use d3 or other javascript files without a web server running on your machine. Plain html and CSS will display fine, but anything computational needs to be done with a server to 'view' your pages.
+
+On Windows, WAMP is a full-service free server (plus MySQL if you want it in the future.) On Mac, you can use either MAMP or run a server in your directory using Python or node from the command line.  Or use an editor that does live previews, like Brackets, but we really recommend learning how to run a server.
+
+#### Wamp on Windows
+
+http://www.wampserver.com/en/
 
 ####MAMP Setup
 
