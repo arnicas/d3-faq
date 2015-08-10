@@ -17,31 +17,33 @@ TOC:
 <a name="loading-data"></a>Loading Data, CSVs, JSON, etc.
 =========================================================
 
-**Using multiple data files (elegantly) - queue, asynchrony, etc.**
-TODO
 
-**How do I treat data sources with a [-, NaN, NA, null] for 0?**
-TODO
+**CSV Column Headers: No spaces!**
 
-**Wide vs. long format for data - how do I transform it?**
-TODO
+No spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears" or "drought_years".
 
-The difference: https://en.wikipedia.org/wiki/Wide_and_narrow_data
-In D3's csv read, each row becomes an object with those attributes, hence often wide format is used for the data. If you have long or narrow format, you can use nest to group by some object identified. E.g.:
-http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
-In Python (especially with pandas), R (melt or reshape), and Excel (with VBA) you can transform it prior to import.
-
-**CSV headers**
-    No spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears”.
 
 **Number format in CSV/data files**
-Remove commas in numeric values - replace a value of “3,050” with “3050.”  Javascript knows it’s thousands!
+Remove commas in numeric values - replace a value of “3,050” with “3050.”  Javascript knows it’s thousands!  Change the number format or type of the cell before saving a spreadsheet as csv, to be sure you fix this.
 
- * **Beware international number formats:**
-    with periods as separators for thousands and commas for decimals (e.g., 234.567,89).  JS expects no comma in the thousands position, and decimal for a float.
+  * Beware international number formats with periods as separators for thousands and commas for decimals (e.g., 234.567,89).  JS expects no comma in the thousands position, and decimal for a float.
 
 **Separator (CSV or TSV)**
 Beware of the separator character and make sure it’s comma if you’re using d3.csv, or tab if you want tab separated and d3.tsv (See [Mike's example](https://gist.github.com/mbostock/3305937)).  Check your data file and fix!
+
+
+**Wide vs. long format for data - how do I transform it?**
+
+The difference: https://en.wikipedia.org/wiki/Wide_and_narrow_data
+
+In D3's csv read, each row becomes an object with those attributes, hence often wide format is used for the data. If you have long or narrow format, you can use nest to group by some object identified.
+
+E.g.:
+http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
+
+In Python (especially with pandas), R (melt or reshape), and Excel (with VBA or by hand) you can transform data prior to import.
+
+
 
 **Read in as strings:**
 Data values read in with d3.csv will be read as strings.  You need to convert types to use numeric values.
@@ -50,6 +52,14 @@ Data values read in with d3.csv will be read as strings.  You need to convert ty
     - +x is a “shorthand” for “treat x as a number”.
     - parseFloat(x)/parseInt(x)
     - Number(x)
+
+
+**Using multiple data files (elegantly) - queue, asynchrony, etc.**
+TODO
+
+**How do I treat data sources with a [-, NaN, NA, null] for 0?**
+TODO
+
 
 
 ####JSON File Format
