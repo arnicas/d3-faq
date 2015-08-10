@@ -1,5 +1,5 @@
-# d3-faq
-##FAQs and Frequently Encountered Problems (FEPs) When Learning D3
+### d3-faq
+# FAQs and Frequently Encountered Problems (FEPs) When Learning D3
 
 **_With contributions from Scott Murray, Sophie Engle, Lynn Cherny_**
 
@@ -15,7 +15,7 @@ TOC:
 
 
 <a name="loading-data"></a>Loading Data, CSVs, JSON, etc.
----------------------------------------------------------
+=========================================================
 
 **Using multiple data files (elegantly) - queue, asynchrony, etc.**
 TODO
@@ -88,12 +88,11 @@ Notice, the labels are in double quotes.  You can check your data’s format in 
 
 
 <a name="general-d3"></a>General D3 Intro Questions
----------------------------------------------------
+===================================================
 
 ####What is or what does it mean to say '+d.someProperty'?**
 
-A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast a d.value as a number.
-Sometimes improper use of this causes errors.
+A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast a d.value as a number. Sometimes improper use of this causes errors.
 
 ####Understanding the difference between chaining and/or naming transitions, versus not.
 TODO
@@ -105,10 +104,30 @@ TODO
 TODO
 
 ####How to add a tooltip
-TODO
+
+Here's a nice lib:
+
+* http://darkmarmot.github.io/kodama/?utm_content=buffer3ff40
+
+Otherwise some people use tipsy:
+
+* http://bl.ocks.org/ilyabo/1373263
+
+Or here's a simple reusable lib called d3-tip:
+
+* https://github.com/Caged/d3-tip
+
+Or roll your own with html/css.
+
+* TODO link to a good one
 
 ####How to add a legend
-TODO
+
+Seriously, use this by Susie Lu:
+
+* https://github.com/susielu/d3-legend
+* Code example: http://bl.ocks.org/curran/950cbe78b4c307fa14a1
+* Docs for it: http://d3-legend.susielu.com/
 
 ####SVG Text
 TODO
@@ -178,14 +197,22 @@ d3.selectAll("circle").attr("cy", 5);
 ```
 
 
-# <a name="gotchas-js"></a>General Gotchas and FAQs with JS
+<a name="gotchas-js"></a>General Gotchas and FAQs with JS
+=========================================================
+
+This site has some nice docs on weird bits of JS: http://bonsaiden.github.io/JavaScript-Garden/
 
 **Case Sensitivity--Or, lower and upper case letters matter!**
 
 JS is case-sensitive.  You can’t call your variable **d.affluence** if the value is really **d.Affluence**.  Also, **d.yearlyAvg** is not the same as **d.yearlyavg**.  If you read them in from a CSV file, check your header labels!
 
-**Using script files, CDNs, etc.**
-TODO
+**Using a CDN for included libraries**
+
+A CDN is a repository for code online (**content delivery network**).  For non-local development, or for bl.ocks.org display, you need paths to CDNs for d3 and tools like jquery, or your bl.ocks won't display correctly.
+
+* D3: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js
+* JQuery: https://code.jquery.com/jquery-2.1.4.js, or minified: https://code.jquery.com/jquery-2.1.4.min.js (see their links: https://code.jquery.com/)
+
 
 **Missing or improperly placed } or })**
 TODO
@@ -201,7 +228,12 @@ TODO
 TODO
 
 **How do I round numbers?**
-TODO
+
+For integer rounding: `Math.round(num)`.
+
+For 2-place decimal rounding, use ` num.toFixed(2) `.
+
+Don't forget to make `num` a real number first if it came in as a string: `parseFloat("123.456").toFixed(2)`.  If you want to use the '+' shorthand to make it a number, you will need brackets: `(+"45.534").toFixed(2)`.
 
 **Equivalence and "Equivalence" in JS**
 
@@ -213,7 +245,7 @@ TODO
 
 
 <a name="debugging-help"></a>Debugging Help
--------------------------------------------
+===========================================
 
 
 Check out the Chrome [tips and tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks) for using the console for debugging.
@@ -274,15 +306,16 @@ Test what your functions return! You can give them sample input:
 
 
 <a name="tool-setup"></a>Tool Setup and Use
--------------------------------------------
+===========================================
 
 ####Git Hub
 
 Intros to GitHub:
 
  * https://guides.github.com/activities/hello-world/
-
  * http://blog.teamtreehouse.com/git-for-designers-part-1
+ * http://vallandingham.me/Quick_Git.html
+
 
 ####Bl.ocks.org and Gists
 
@@ -300,6 +333,8 @@ Intros to GitHub:
 
   Or add the extension to your browser: https://github.com/mbostock/bl.ocks.org (scroll down)
 
+  Note that the bl.ocks.org site takes a few mins to catch up to changes on the gists site.
+
 **Path to d3 in a bl.ocks.org file:**
 
 Your d3 won’t display in the live page in a published gist/bl.ock if you don’t use the path to the online CDN (rather than your local version).  Your error in your console will say “d3 cannot be found.”
@@ -311,6 +346,7 @@ Your d3 won’t display in the live page in a published gist/bl.ock if you don�
 **How do I get an image in bl.ocks.org previews?**
 Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
 
+**Command line gistup tool: https://github.com/mbostock/gistup**
 
 ###Running a Server
 
@@ -375,8 +411,12 @@ Apparently the Brackets MACOSX editor will run like a server and display your fi
 
 
 
+
 <a name="useful-code-snippets"></a>Useful Code Snippets
--------------------------------------------------------
+=======================================================
+
+* I recommend you use/look into lowdash: http://colintoh.com/blog/lodash-10-javascript-utility-functions-stop-rewriting
+
 
 These code snippets are in the js directory.
 
@@ -389,5 +429,10 @@ svg and group parameters need to be D3 selections.
 **translate.js**: helper for translating SVG elements.
 
 
+<a name="resources"></a>Resources
+=================================
 
+### Learning JS for free online
+
+* https://www.javascript.com/resources
 
