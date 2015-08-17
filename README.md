@@ -61,11 +61,10 @@ TODO
 TODO
 
 
-
 ####JSON File Format
 
 **Be aware of invalid JSON:**
-    JSON format looks like this (from [Wikipedia](http://en.wikipedia.org/wiki/JSON)): 
+    JSON format looks like this (from [Wikipedia](http://en.wikipedia.org/wiki/JSON)):
 
 ````
 {
