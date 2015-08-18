@@ -13,7 +13,6 @@ TOC:
 * [Useful Code Snippets](#useful-code-snippets)
 
 
-
 <a name="loading-data"></a>Loading Data, CSVs, JSON, etc.
 =========================================================
 
@@ -24,13 +23,25 @@ No spaces in your header column names, and try to keep them short so you can wor
 
 
 **Number format in CSV/data files**
+
 Remove commas in numeric values - replace a value of “3,050” with “3050.”  Javascript knows it’s thousands!  Change the number format or type of the cell before saving a spreadsheet as csv, to be sure you fix this.
 
-  * Beware international number formats with periods as separators for thousands and commas for decimals (e.g., 234.567,89).  JS expects no comma in the thousands position, and decimal for a float.
+Beware international number formats with periods as separators for thousands and commas for decimals (e.g., 234.567,89).  JS expects no comma in the thousands position, and decimal for a float.
 
-**Separator (CSV or TSV)**
+**Right separator? (CSV--"comma separated values" or TSV--"tab" etc.)**
+
 Beware of the separator character and make sure it’s comma if you’re using d3.csv, or tab if you want tab separated and d3.tsv (See [Mike's example](https://gist.github.com/mbostock/3305937)).  Check your data file and fix!
 
+
+**Numbers are Read as Strings-Convert Them!**
+
+Data values read in with d3.csv will be read as strings.  You need to convert types to use numeric values.
+
+Convert input data types from string to numeric for use in functions:
+
+- `+x` is a “shorthand” for “treat x as a number”.
+- use `parseFloat(x)` or `parseInt(x)` otherwise, or
+- `Number(x)`
 
 **Wide vs. long format for data - how do I transform it?**
 
@@ -41,30 +52,25 @@ In D3's csv read, each row becomes an object with those attributes, hence often 
 E.g.:
 http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
 
-In Python (especially with pandas), R (melt or reshape), and Excel (with VBA or by hand) you can transform data prior to import.
+In Python (especially with pandas), R (melt or reshape), and Excel (with VBA or by hand), you can transform data prior to import.
 
-
-
-**Read in as strings:**
-Data values read in with d3.csv will be read as strings.  You need to convert types to use numeric values.
-
- * Convert input data types from string to numeric for use in functions
-    - +x is a “shorthand” for “treat x as a number”.
-    - parseFloat(x)/parseInt(x)
-    - Number(x)
+TODO: ADD MORE.
 
 
 **Using multiple data files (elegantly) - queue, asynchrony, etc.**
+
 TODO
 
 **How do I treat data sources with a [-, NaN, NA, null] for 0?**
+
 TODO
 
 
 ####JSON File Format
 
-**Be aware of invalid JSON:**
-    JSON format looks like this (from [Wikipedia](http://en.wikipedia.org/wiki/JSON)):
+**Be aware and beware of invalid JSON:**
+
+JSON format looks like this (from [Wikipedia](http://en.wikipedia.org/wiki/JSON)):
 
 ````
 {
@@ -103,16 +109,9 @@ Notice, the labels are in double quotes.  You can check your data’s format in 
 
 A shorthand often seen in Mike Bostock's code (and now everyone else's) to cast a d.value as a number. Sometimes improper use of this causes errors.
 
-####Understanding the difference between chaining and/or naming transitions, versus not.
-TODO
+####How do I add a tooltip?
 
-####How to put multiple graphs on the page (small multiples)
-TODO
-
-####Method chaining and the reusable chart pattern
-TODO
-
-####How to add a tooltip
+The poor and fast way is to use the `title` attribute on an appropriate SVG object. This requires the user to hover over the item for a bit before it appears.  Not the most recommended or most flexible.
 
 Here's a nice lib:
 
@@ -126,11 +125,10 @@ Or here's a simple reusable lib called d3-tip:
 
 * https://github.com/Caged/d3-tip
 
-Or roll your own with html/css.
+Or roll your own with html/css.  Here's an example: https://bl.ocks.org/arnicas/c911d0abfe9819305660
 
-* TODO link to a good one
 
-####How to add a legend
+####How do I add a legend?
 
 Seriously, use this by Susie Lu:
 
@@ -138,24 +136,10 @@ Seriously, use this by Susie Lu:
 * Code example: http://bl.ocks.org/curran/950cbe78b4c307fa14a1
 * Docs for it: http://d3-legend.susielu.com/
 
-####SVG Text
-TODO
-
-**How do I split long lines of SVG text?**
-TODO
-
-**How do I add an icon or html to SVG text?**
-TODO
-
-####Data() vs. Datum()**
-TODO
 
 ####Style vs. Attr for SVG elements
-TODO
 
-**Which takes precedence, which to use when:**
-
-Use style sheets when you can, because you want to keep the formatting independent of the code as much as possible.  This makes it easier to swap in a new look without having to hunt through code for the right variables and when they are applied.  This means instead of doing hard coded
+Use style sheets when you can, because you want to keep the formatting independent of the code as much as possible.  This makes it easier to swap in a new look without having to hunt through code for the right variables and when they are applied.  This means instead of doing hard-coded
 
 ````
     d3.select(‘rect’).style(‘fill’, ‘red’)
@@ -168,6 +152,8 @@ and then in the style sheet:
 ````
     .redrect { fill: red }
 ````
+
+TODO: Add more.
 
 ####Date Formats and Formatting - Reading and Writing!
 
@@ -205,6 +191,37 @@ d3.selectAll("circle").attr("cx", 5);
 d3.selectAll("circle").attr("cy", 5);
 ```
 
+####Formatting and Working with SVG Text
+
+Text in SVG is a pain.  There are common issues and solutions.
+
+**How do I split long lines of SVG text?**
+
+TODO
+
+**How do I add an icon or html to SVG text?**
+
+TODO
+
+####Data() vs. Datum()**
+
+Which to use when?
+
+TODO
+
+####Understanding the difference between chaining and/or naming transitions, versus not.
+
+TODO
+
+####How to put multiple graphs on the page (small multiples)
+
+TODO
+
+####Method chaining and the reusable chart pattern
+
+TODO
+
+
 
 <a name="gotchas-js"></a>General Gotchas and FAQs with JS
 =========================================================
@@ -223,19 +240,6 @@ A CDN is a repository for code online (**content delivery network**).  For non-l
 * JQuery: https://code.jquery.com/jquery-2.1.4.js, or minified: https://code.jquery.com/jquery-2.1.4.min.js (see their links: https://code.jquery.com/)
 
 
-**Missing or improperly placed } or })**
-TODO
-
-**Missing semicolons confusing interpretation of JavaScript**
-TODO
-
-**var scope**
-* Initially, variables in included script files are the same as variables defined in the HTML body script sections.
-* global and local
-
-**this**
-TODO
-
 **How do I round numbers?**
 
 For integer rounding: `Math.round(num)`.
@@ -244,8 +248,27 @@ For 2-place decimal rounding, use ` num.toFixed(2) `.
 
 Don't forget to make `num` a real number first if it came in as a string: `parseFloat("123.456").toFixed(2)`.  If you want to use the '+' shorthand to make it a number, you will need brackets: `(+"45.534").toFixed(2)`.
 
+
+**Missing or improperly placed } or })**
+
+TODO
+
+**Missing semicolons confusing interpretation of JavaScript**
+
+TODO
+
+**var scope**
+
+* Initially, variables in included script files are the same as variables defined in the HTML body script sections.
+* global and local
+
+**What is `this`?**
+
+TODO
+
 **Equivalence and "Equivalence" in JS**
 
+TODO:
 Understanding the "equivalent-ish" operator `==` versus the "equivalent" operator `===` and when one is beneficial and when it is not. Especially since `if(something)` is often used in examples to detect if something is not undefined, but will break if your data has 0 values in it.
 
 **Script file at start in head or at end.**
@@ -293,6 +316,7 @@ Remember that if you assign a function to a variable, it's still a function! Som
 Did you parse the value correctly?  Is there a value in the cell?
 
 **Coping with NaNs when charting (bars, lines)**
+
 TODO
 
 
@@ -317,78 +341,41 @@ Test what your functions return! You can give them sample input:
 <a name="tool-setup"></a>Tool Setup and Use
 ===========================================
 
-####Git Hub
-
-Intros to GitHub:
-
- * https://guides.github.com/activities/hello-world/
- * http://blog.teamtreehouse.com/git-for-designers-part-1
- * http://vallandingham.me/Quick_Git.html
-
-
-####Bl.ocks.org and Gists
-
-* Mike's Command line tutorial on making a block: http://bost.ocks.org/mike/block/**
-
-* **Seeing source gist for a bl.ock:**
-
-  To find the source of a bl.ocks.org link, just replace the blocks part with gist.github.com:
-
-  ```
-  http://bl.ocks.org/AndresClavijo/9706481d505f2553a71a
-  becomes
-  https://gist.github.com/AndresClavijo/9706481d505f2553a71a
-  ```
-
-  Or add the extension to your browser: https://github.com/mbostock/bl.ocks.org (scroll down)
-
-  Note that the bl.ocks.org site takes a few mins to catch up to changes on the gists site.
-
-**Path to d3 in a bl.ocks.org file:**
-
-Your d3 won’t display in the live page in a published gist/bl.ock if you don’t use the path to the online CDN (rather than your local version).  Your error in your console will say “d3 cannot be found.”
-
-````
-    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
-````
-
-**How do I get an image in bl.ocks.org previews?**
-Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
-
-**Command line gistup tool: https://github.com/mbostock/gistup**
-
 ###Running a Server
 
 You won't be able to use d3 or other javascript files without a web server running on your machine. Plain html and CSS will display fine, but anything computational needs to be done with a server to 'view' your pages.
 
 On Windows, WAMP is a full-service free server (plus MySQL if you want it in the future.) On Mac, you can use either MAMP or run a server in your directory using Python or node from the command line.  Or use an editor that does live previews, like Brackets, but we really recommend learning how to run a server.
 
-#### Wamp on Windows
+####Wamp on Windows
 
-http://www.wampserver.com/en/
+For a windows server, look here: http://www.wampserver.com/en/
 
 ####MAMP Setup
 
 The location for MAMP is here: https://www.mamp.info/en/downloads/.  You only need MAMP, not MAMP Pro, unless you want to get extra nice features for money.
-If you are struggling with the setup for the web server on a Mac:  after downloading MAMP, double click to install and go through the install screens.  Then find the app icon for MAMP (not MAMP Pro! that's a free trial) in your Launchpad or Applications directory and start it up.
+
+If you are struggling with the setup for the web server on a Mac:  After downloading MAMP, double click to install and go through the install screens.  Then find the app icon for MAMP (not MAMP Pro! that's a free trial) in your Launchpad or Applications directory and start it up.
 
 You will see a preferences icon on the left:
 
 ![mamp dialog](images/mamp_dialog.png)
 
- Apparently MAMP by default uses a port that is used by other stuff like Skype (8888).  You will probably want to change it.  If your server never starts (the button never turns green on the dialog), you probably have a port conflict. If you click on the Preferences, you can change the port for the localhost server if you want.  (I wanted a different one because I have other servers running on the same machine.  The default port for web servers is 80, but it may be in use already.)  If you change the port, for example to 7777, you will enter the url as:
+ Apparently MAMP by default uses a port that is used by other stuff like Skype (8888).  You will probably want to change it.  If your server never starts (the button never turns green on the dialog), you probably have a port conflict. If you click on the **Preferences**, you can change the port for the localhost server if you want.  (I wanted a different one because I have other servers running on the same machine.  The default port for web servers is 80, but it may be in use already.)  If you change the port, for example to 7777, you will enter the url in your browser as:
 
-```http://localhost:7777``` to see your files list.
+```http://localhost:7777```
 
-To get those files --- You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called D3 Work.
+to see your files list.
+
+To get those files --- You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called **Knight D3** for this example.
 
 ![mamp preferences](images/mamp_preferences.png)
 
 Put the files you want to view in the browser into the directory you set as your Document Root. Make sure the server is running - on the Start/Stop tab there should be a green server power icon showing.
 
-Then, in your browser, go to http://localhost or http://localhost:YourNumber and you should see the files with links if they are html files.
+Then, in your browser, go to `http://localhost` or `http://localhost:<YourNumber>` and you should see the files with links if they are HTML files.
 
-Error on Yosemite 10: try this fix http://stackoverflow.com/questions/25333173/mysql-with-mamp-does-not-work-with-osx-yosemite-10-10/26446158#26446158.
+If you run into an error on Yosemite 10, try this fix: http://stackoverflow.com/questions/25333173/mysql-with-mamp-does-not-work-with-osx-yosemite-10-10/26446158#26446158.
 
 ###Python SimpleServer from Command Line
 
@@ -398,7 +385,7 @@ Alternately, from a Terminal program command line on the Mac (google how to find
 >python -m HTTPSimpleServer 5555
 ````
 
-You'll need to run this whenever you want to work on your web files.  You'll go to http://localhost:5555 to see the files in the directory if you use the command above.
+You'll need to run this whenever you want to work on your web files.  You'll go to `http://localhost:5555` to see the files in the directory if you use the command above.
 
 You can stop the webserver by typing ^c (control-c) in that window.
 
@@ -411,37 +398,80 @@ brew install node
 npm install -g http-server
 http-server
 ````
-This will make your server at localhost:8080.
+This will make your server at `http://localhost:8080`.
 
 
 ####Brackets Editor Preview Option
 
-Apparently the Brackets MACOSX editor will run like a server and display your files just fine locally: http://brackets.io/
+Apparently the Brackets MACOSX editor will run like a server and display your files just fine locally: http://brackets.io/.  (I don't have any details about how this works yet.)
+
+------------
+
+###GitHub
+
+Intros to GitHub:
+
+ * https://guides.github.com/activities/hello-world/
+ * http://blog.teamtreehouse.com/git-for-designers-part-1
+ * http://vallandingham.me/Quick_Git.html
 
 
+###Bl.ocks.org and Gists
+
+You might want to look at Mike's Command line tutorial on making a block: http://bost.ocks.org/mike/block/
+
+**Seeing source gist for a bl.ock:**
+
+To find the source of a bl.ocks.org link, just replace the blocks part with gist.github.com:
+
+```
+http://bl.ocks.org/AndresClavijo/9706481d505f2553a71a
+becomes
+https://gist.github.com/AndresClavijo/9706481d505f2553a71a
+```
+
+Or add the extension to your browser: https://github.com/mbostock/bl.ocks.org (scroll down)
+
+Note that the bl.ocks.org site takes a few mins to catch up to changes on the gists site.
+
+**Path to d3 in a bl.ocks.org file:**
+
+Your d3 won’t display in the live page in a published gist/bl.ock if you don’t use the path to the online CDN (rather than your local version).  Your error in your console will say “d3 cannot be found.”
+
+````
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+````
+
+**How do I get an image in bl.ocks.org previews?**
+
+Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
+
+**Command line gistup tool: https://github.com/mbostock/gistup**
+
+TODO: Say more?
 
 
 <a name="useful-code-snippets"></a>Useful Code Snippets
 =======================================================
 
-* I recommend you use/look into lowdash: http://colintoh.com/blog/lodash-10-javascript-utility-functions-stop-rewriting
+I recommend you use/look into lowdash: http://colintoh.com/blog/lodash-10-javascript-utility-functions-stop-rewriting
+
+These code snippets are in the js directory:
 
 
-These code snippets are in the js directory.
-
-**fixBounds.js**: fixes the size and viewbox of an SVG
+* **fixBounds.js**: fixes the size and viewbox of an SVG
 to fit an inner group with the specified padding. Both the
 svg and group parameters need to be D3 selections.
 
-**processError.js**: for handling error during file read.
+* **processError.js**: for handling error during file read.
 
-**translate.js**: helper for translating SVG elements.
+* **translate.js**: helper for translating SVG elements.
 
 
 <a name="resources"></a>Resources
 =================================
 
-### Learning JS for free online
+### Learning JS for free, online
 
-* https://www.javascript.com/resources
+See https://www.javascript.com/resources.
 
