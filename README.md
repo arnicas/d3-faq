@@ -16,10 +16,12 @@ TOC:
 <a name="loading-data"></a>Loading Data, CSVs, JSON, etc.
 =========================================================
 
+There is great material on loading your data, with nice explanations, in [Learn JS Data](http://learnjsdata.com/read_data.html).
+
 
 **CSV Column Headers: No spaces!**
 
-No spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears" or "drought_years".
+It's safest not to use spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears" or "drought_years".
 
 
 **Number format in CSV/data files**
@@ -49,10 +51,11 @@ The difference: https://en.wikipedia.org/wiki/Wide_and_narrow_data
 
 In D3's csv read, each row becomes an object with those attributes, hence often wide format is used for the data. If you have long or narrow format, you can use nest to group by some object identified.
 
-E.g.:
-http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
+E.g.: http://stackoverflow.com/questions/15533533/multiline-chart-in-d3-with-long-format-data
 
 In Python (especially with pandas), R (melt or reshape), and Excel (with VBA or by hand), you can transform data prior to import.
+
+There is some information on reformatting data by nesting, etc., at http://learnjsdata.com/group_data.html.
 
 TODO: ADD MORE.
 
