@@ -19,9 +19,11 @@ TOC:
 There is great material on loading your data, with nice explanations, in [Learn JS Data](http://learnjsdata.com/read_data.html).
 
 
-**CSV Column Headers: No spaces!**
+**CSV Column Headers: Avoid spaces! Keep them Short!**
 
 It's safest not to use spaces in your header column names, and try to keep them short so you can work with them (but still know what they refer to).  So, a column called “Years of Drought” should be named to something like “DroughtYears" or "drought_years".
+
+Your source data may have very long column headers, but you don't want to be typing them in (and having to use quotes because of spaces) in your code.  Abbreviate!
 
 
 **Number format in CSV/data files**
@@ -156,7 +158,23 @@ and then in the style sheet:
     .redrect { fill: red }
 ````
 
-TODO: Add more.
+For dynamic styling, you want to do it inline, of course. From [an excellent article on best practices in D3 coding](https://northlandia.wordpress.com/2014/10/23/ten-best-practices-for-coding-with-d3/):
+
+````
+.style("fill", function(d) {
+        return choropleth(d, colorize);
+    })
+
+//OVERRIDES
+
+    .attr("fill", function(d) {
+        return choropleth(d, colorize);
+    })
+
+````
+
+    "Things can get confusing if you assign a style rule as a style in one place and then try to re-assign it as an attribute in another. Thus, it’s best to pick one or the other, and style generally seems more appropriate to me. Note that this does not apply to element x/y positions or path d strings, which are only available as attributes." [Source: [an excellent article on best practices in D3 coding](https://northlandia.wordpress.com/2014/10/23/ten-best-practices-for-coding-with-d3/)]
+
 
 ####Date Formats and Formatting - Reading and Writing!
 
@@ -234,6 +252,10 @@ This site has some nice docs on weird bits of JS: http://bonsaiden.github.io/Jav
 **Case Sensitivity--Or, lower and upper case letters matter!**
 
 JS is case-sensitive.  You can’t call your variable **d.affluence** if the value is really **d.Affluence**.  Also, **d.yearlyAvg** is not the same as **d.yearlyavg**.  If you read them in from a CSV file, check your header labels!
+
+**Invalid Characters in Variable Names**
+
+To be safe, you should follow these rules: variable names should start with a letter or `_` or `$` and the other characters can be letters or `_` or `$` or numbers.  You may not start a variable name with a number. You may not use `-` in your variable name. You can't use spaces in variable names. Some people like to use camelcase in longer variable names, because it avoids spaces and allows you to parse words visually:  camelCase. lowerCaseThenUpperCase.
 
 **Using a CDN for included libraries**
 
