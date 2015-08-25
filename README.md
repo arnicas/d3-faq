@@ -440,6 +440,9 @@ Intros to GitHub:
  * http://blog.teamtreehouse.com/git-for-designers-part-1
  * http://vallandingham.me/Quick_Git.html
 
+Command line is an issue on Windows:
+* [Command Line github on Windows](http://stackoverflow.com/questions/11000869/command-line-git-on-windows)
+
 
 ###Bl.ocks.org and Gists
 
@@ -474,6 +477,10 @@ Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
 **Command line gistup tool: https://github.com/mbostock/gistup**
 
 TODO: Say more?
+
+### (Shell) Command Line
+
+Knowing something about command line usage (Unix/bash/etc) is a good idea. A nice intro tutorial: http://cli.learncodethehardway.org/book/
 
 
 <a name="useful-code-snippets"></a>Useful Code Snippets
