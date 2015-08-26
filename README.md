@@ -502,6 +502,8 @@ svg and group parameters need to be D3 selections.
 
 * **translate.js**: helper for translating SVG elements.
 
+* **moveToFront.js**: helper to move the currently selected item to top (in crowded plots)
+
 
 <a name="resources"></a>Resources
 =================================
