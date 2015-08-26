@@ -375,8 +375,11 @@ On Windows, WAMP is a full-service free server (plus MySQL if you want it in the
 ####Wamp on Windows
 
 For a windows server, look here: http://www.wampserver.com/en/
+There is some guidance in [this slideshow on configuring WAMP](http://www.slideshare.net/triniwiz/wamp-20949805) - I recommend you don't set Firefox as your default browser, but Chrome instead.
 
-####MAMP Setup
+Your default `www` files directory will be inside the wamp folder on your computer.
+
+####MAMP Setup on Macs
 
 The location for MAMP is here: https://www.mamp.info/en/downloads/.  You only need MAMP, not MAMP Pro, unless you want to get extra nice features for money.
 
