@@ -25,6 +25,36 @@ It's safest not to use spaces in your header column names, and try to keep them 
 
 Your source data may have very long column headers, but you don't want to be typing them in (and having to use quotes because of spaces) in your code.  Abbreviate!
 
+From Scott Murray:
+
+    I strongly recommend simplifying column titles so they do not include spaces. Why? JavaScript object notation is simpler without spaces. Let me give you an example.
+
+    Say you define an object like so:
+
+    var object = { 
+      Country: “USA”,
+      “Number of Bananas per Capita (millions)”: “556”,
+      ”Total Length of Peels if Laid End to End (kilometers)”: “412415123”
+    }
+
+    To get at the value “556”, you would need to type:
+
+    object[“Number of Bananas per Capita (millions)”]
+
+    However, if you excluded spaces from your column titles, so your object looked like this:
+
+    var object = { 
+      country: “USA”,
+      numBananas: “556”,
+      peelLength: “412415123”
+    }
+
+    …well first of all, that is so much easier to read, but also then you can use simplified object notation:
+
+    object.numBananas  //returns “556”
+
+    See, you don’t need the quotation marks or the brackets. So eliminating spaces just saves you a lot of typing and headache later.
+
 
 **Number format in CSV/data files**
 
