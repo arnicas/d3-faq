@@ -461,9 +461,14 @@ becomes
 https://gist.github.com/AndresClavijo/9706481d505f2553a71a
 ```
 
-Or add the extension to your browser: https://github.com/mbostock/bl.ocks.org (scroll down)
+Or add the extension to your browser (however, this isn't working for me right now): https://github.com/mbostock/bl.ocks.org (scroll down)
 
 Note that the bl.ocks.org site takes a few mins to catch up to changes on the gists site.
+
+**Seeing a Gist as a Bl.ock**:
+
+  **VERY IMPORTANT: Your block view of a gist will only display visually if you have an index.html file in the gist!**
+
 
 **Path to d3 in a bl.ocks.org file:**
 
