@@ -377,7 +377,7 @@ On Windows, WAMP is a full-service free server (plus MySQL if you want it in the
 For a windows server, look here: http://www.wampserver.com/en/
 There is some guidance in [this slideshow on configuring WAMP](http://www.slideshare.net/triniwiz/wamp-20949805) - I recommend you don't set Firefox as your default browser, but Chrome instead.
 
-Your default `www` files directory will be inside the wamp folder on your computer.
+Your default `www` files directory will be inside the wamp folder on your computer. You want to move your files into that directory to be able to view them. By default, the index.php file will display when you open `http://localhost` in a browser. To see the files you want, you will need to add the directory path to that url: `http://localhost/my_folder/`.  Then any index.html in that directory will display instead, if you're configured right. Or hopefully a list of files, if there's no index.html!
 
 ####MAMP Setup on Macs
 
