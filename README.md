@@ -32,7 +32,7 @@ From Scott Murray:
 
     Say you define an object like so:
 
-    var object = { 
+    var object = {
       Country: “USA”,
       “Number of Bananas per Capita (millions)”: “556”,
       ”Total Length of Peels if Laid End to End (kilometers)”: “412415123”
@@ -409,9 +409,13 @@ On Windows, WAMP is a full-service free server (plus MySQL if you want it in the
 ####Wamp on Windows
 
 For a windows server, look here: http://www.wampserver.com/en/
-There is some guidance in [this slideshow on configuring WAMP](http://www.slideshare.net/triniwiz/wamp-20949805) - I recommend you don't set Firefox as your default browser, but Chrome instead.
+There is some guidance on installing it in [this slideshow on configuring WAMP](http://www.slideshare.net/triniwiz/wamp-20949805) - I recommend you don't set Firefox as your default browser, but Chrome instead.
 
-Your default `www` files directory will be inside the wamp folder on your computer. You want to move your files into that directory to be able to view them. By default, the index.php file will display when you open `http://localhost` in a browser. To see the files you want, you will need to add the directory path to that url: `http://localhost/my_folder/`.  Then any index.html in that directory will display instead, if you're configured right. Or hopefully a list of files, if there's no index.html!
+Your default `www` files directory will be inside the wamp folder on your computer (by default, at `C:\wamp`). You want to move your files into that directory to be able to view them.
+
+By default, the index.php file will display when you open `http://localhost` in a browser. To see the files you want, you will need to add the directory path to that url: `http://localhost/my_folder/`.  *You must type the URL path in your browser.*  You can't click on a file in the explorer and have it display with the server.  Then any index.html in that directory will display instead, if you're configured right. Or hopefully a list of files, if there's no index.html!
+
+In Windows 10 (or if you see an orange icon for the WAMP icon), you may have a port conflict with the default port 80.  Refer to this [video](https://www.youtube.com/watch?v=bRrCqI9Ig4k).
 
 ####MAMP Setup on Macs
 
@@ -499,10 +503,13 @@ Or add the extension to your browser (however, this isn't working for me right n
 
 Note that the bl.ocks.org site takes a few mins to catch up to changes on the gists site.
 
-**Seeing a Gist as a Bl.ock**:
+**Seeing a Gist as a Bl.ock with Vis Rendered - html page name**:
 
-  **VERY IMPORTANT: Your block view of a gist will only display visually if you have an index.html file in the gist!**
+Scott Murray:
 
+````
+When creating your block, make sure your HTML page is named “index.html”. It must be named exactly that, with all lowercase letters. (“Index.html” will not work!) This is a web convention, to name your primary page index.html, and the blocks service expects you to follow it.
+````
 
 **Path to d3 in a bl.ocks.org file:**
 
@@ -515,6 +522,29 @@ Your d3 won’t display in the live page in a published gist/bl.ock if you don�
 **How do I get an image in bl.ocks.org previews?**
 
 Using git and adding a thumbnail: http://bost.ocks.org/mike/block/#advanced
+
+**Vis that is too big for bl.ocks**
+
+From Scott Murray:
+
+````
+  The blocks preview frame is 960 x 500 pixels. If your design exceeds these dimensions, you’ll need to click “Open in a new window” to see the whole thing, or you can insert “/raw/” in the URL following your username. For example, here is a block of mine:
+  http://bl.ocks.org/alignedleft/9471486
+  …and here is the URL for the “raw” version:
+  http://bl.ocks.org/alignedleft/raw/9471486/
+````
+
+**Security Error with bl.ocks.org Pages**
+
+From Scott Murray:
+
+````
+  The Gist service supports secure, HTTPS connections, but blocks does not. So, make sure your blocks URL uses only “http://…” not “https://…” or you’ll see a security error. This is confusing, as this secure gist:
+  https://gist.github.com/alignedleft/9471486
+  …appears as an insecure block here:
+  http://bl.ocks.org/alignedleft/9471486
+````
+
 
 **Command line gistup tool: https://github.com/mbostock/gistup**
 
