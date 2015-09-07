@@ -484,10 +484,9 @@ Intros to GitHub:
 Command line is an issue on Windows:
 * [Command Line github on Windows](http://stackoverflow.com/questions/11000869/command-line-git-on-windows)
 
+--------------
 
 ###Bl.ocks.org and Gists
-
-You might want to look at Mike's Command line tutorial on making a block: http://bost.ocks.org/mike/block/
 
 **Seeing source gist for a bl.ock:**
 
@@ -513,10 +512,10 @@ When creating your block, make sure your HTML page is named “index.html”. It
 
 **Path to d3 in a bl.ocks.org file:**
 
-Your d3 won’t display in the live page in a published gist/bl.ock if you don’t use the path to the online CDN (rather than your local version).  Your error in your console will say “d3 cannot be found.”
+Your d3 won’t display in the live page in a published gist/bl.ock if you don’t use the path to the online CDN (rather than your local version).  Your error in your console will say “File not found.”
 
 ````
-    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 ````
 
 **How do I get an image in bl.ocks.org previews?**
@@ -545,10 +544,9 @@ From Scott Murray:
   http://bl.ocks.org/alignedleft/9471486
 ````
 
-
 **Command line gistup tool: https://github.com/mbostock/gistup**
 
-TODO: Say more?
+You might want to look at Mike's Command line tutorial on making a block: http://bost.ocks.org/mike/block/ and his gistup tool.
 
 ### (Shell) Command Line
 
