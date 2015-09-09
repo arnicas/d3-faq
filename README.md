@@ -429,9 +429,10 @@ You will see a preferences icon on the left:
 
  Apparently MAMP by default uses a port that is used by other stuff like Skype (8888).  You will probably want to change it.  If your server never starts (the button never turns green on the dialog), you probably have a port conflict. If you click on the **Preferences**, you can change the port for the localhost server if you want.  (I wanted a different one because I have other servers running on the same machine.  The default port for web servers is 80, but it may be in use already.)  If you change the port, for example to 7777, you will enter the url in your browser as:
 
-```http://localhost:7777```
+````http://localhost:7777
+````
 
-to see your files list.
+to see the files list under the MAMP server home directory.
 
 To get those files --- You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called **Knight D3** for this example.
 
