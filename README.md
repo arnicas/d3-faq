@@ -433,9 +433,11 @@ You will see a preferences icon on the left:
 http://localhost:7777
 ````
 
-to see the files list under the MAMP server home directory.
+This will show you the files (or index.html) in the MAMP server directory root.  You will only be able to browse to files inside the server home directory folder.
 
-To get those files --- You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called **Knight D3** for this example.
+**To change your Home Directory for MAMP**
+
+You may want to click on the Preferences and **set a new home directory** for your server.  Click on the "Web Server" tab and double click on the document root icon to pick a new directory.  I made one called **Knight D3** for this example.
 
 ![mamp preferences](images/mamp_preferences.png)
 
